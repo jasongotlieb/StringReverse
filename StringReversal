@@ -1,0 +1,35 @@
+/*
+ * A simple class that takes a String
+ * and reverses it recursively.
+ */
+public class StringReversal {
+
+  /*
+	 * The main method. This method expects a single command 
+	 * line argument to be passed.
+	 */
+	public static void main(String args[]) {
+		try{ //execute until crash
+			String inString=args[0]; //get the 
+			String reversedString = reverseString(inString); //recursion (see below)
+			System.out.println(reversedString); //print the new string that is now reversed!
+		}
+		catch (Exception e){ //the try loop failed. continue...
+			System.out.println(e.getCause()); //print the cause of failure and die.
+		}
+	}
+	
+	/*
+	 * this method takes a String and returns the reverse of the String
+	 * as a String.
+	 */
+	public static String reverseString(String s){
+		if (s.length() == 0) //base case, if the string is ""
+			return s; //our work here is done!
+		//System.out.println(s.charAt(0)); //un-comment to help debug
+		return reverseString(s.substring(1)) + s.charAt(0); //adds the String's first letter to the 
+															//end of the String. 
+															//and then sends the rest through again
+															//and again...until 's' has no substring.
+	}
+}
